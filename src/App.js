@@ -9,6 +9,8 @@ import MultiSelector from './multiSelector/MultiSelector';
 import TestMultiCheckItem from './multiSelector/TestMultiCheckItem';
 import TestMultiCategories, { initialSelectedIds, exceptionIds, notSelectionIds } from './multiSelector/TestMultiCategories';
 
+import PropsComp from './propsComponent/PropsComp';
+
 function App() {
   const [selectedItemsParent, setSelectedItemsParent] = useState([]);
   const [selectedItems, setSelectedItems] = useState([]);
@@ -20,7 +22,8 @@ function App() {
 
   return (
     <div className="App">
-      <ParentComp>
+      <PropsComp />
+      {/* <ParentComp>
         <ChildComp />
       </ParentComp>
       <MultiSelector
@@ -45,7 +48,7 @@ function App() {
             return `${id}, `;
           })
         }
-      </div>
+      </div> */}
     </div>
   );
 }

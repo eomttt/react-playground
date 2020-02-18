@@ -1,15 +1,27 @@
 import React, { useState } from 'react';
-import logo from './logo.svg';
+import { Provider } from 'react-redux';
+
 import './App.css';
 
-import ParentComp from './childProps/ParentComp';
-import ChildComp from './childProps/ChildComp';
+// Props to child
+import ParentComp from './components/childProps/ParentComp';
+import ChildComp from './components/childProps/ChildComp';
 
-import MultiSelector from './multiSelector/MultiSelector';
-import TestMultiCheckItem from './multiSelector/TestMultiCheckItem';
-import TestMultiCategories, { initialSelectedIds, exceptionIds, notSelectionIds } from './multiSelector/TestMultiCategories';
+// MulitiSelector
+import MultiSelector from './components/multiSelector/MultiSelector';
+import TestMultiCheckItem from './components/multiSelector/TestMultiCheckItem';
+import TestMultiCategories, { initialSelectedIds, exceptionIds, notSelectionIds } from './components/multiSelector/TestMultiCategories';
 
-import PropsComp from './propsComponent/PropsComp';
+// Props to components
+import PropsComp from './components/propsComponent/PropsComp';
+
+// Redux & Redux-Thunk test
+import CountComponent from './components/reduxThunkTest/Count';
+
+import createStore from './store';
+import reducers from './reducers';
+
+const store = createStore(reducers);
 
 function App() {
   const [selectedItemsParent, setSelectedItemsParent] = useState([]);
@@ -21,35 +33,38 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <PropsComp />
-      {/* <ParentComp>
-        <ChildComp />
-      </ParentComp>
-      <MultiSelector
-        categories={TestMultiCategories}
-        initialSelectedIds={initialSelectedIds}
-        exceptionIds={exceptionIds}
-        notSelectionIds={notSelectionIds}
-        handleSelectedCategories={handleSelectedCategories}
-      >
-        <TestMultiCheckItem/>
-      </MultiSelector>
-      <div>
-        {'Only parent: '}{
-          selectedItemsParent.map((id) => {
-            return `${id}, `;
-          })
-        }
+    <Provider store={store}>
+      <div className="App">
+        <PropsComp />
+        <ParentComp>
+          <ChildComp />
+        </ParentComp>
+        <MultiSelector
+          categories={TestMultiCategories}
+          initialSelectedIds={initialSelectedIds}
+          exceptionIds={exceptionIds}
+          notSelectionIds={notSelectionIds}
+          handleSelectedCategories={handleSelectedCategories}
+        >
+          <TestMultiCheckItem/>
+        </MultiSelector>
+        <div>
+          {'Only parent: '}{
+            selectedItemsParent.map((id) => {
+              return `${id}, `;
+            })
+          }
+        </div>
+        <div>
+          {'Whole selected: '}{
+            selectedItems.map((id) => {
+              return `${id}, `;
+            })
+          }
+        </div>
+        <CountComponent />
       </div>
-      <div>
-        {'Whole selected: '}{
-          selectedItems.map((id) => {
-            return `${id}, `;
-          })
-        }
-      </div> */}
-    </div>
+    </Provider>
   );
 }
 

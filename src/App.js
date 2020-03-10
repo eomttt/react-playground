@@ -17,6 +17,7 @@ import PropsComp from './components/propsComponent/PropsComp';
 
 // Redux & Redux-Thunk test
 import CountComponent from './components/reduxThunkTest/Count';
+import CountFCComponent from './components/reduxThunkTest/CountFC';
 
 import createStore from './store';
 import reducers from './reducers';
@@ -63,6 +64,7 @@ function App() {
           }
         </div>
         <CountComponent />
+        <CountFCComponent />
       </div>
     </Provider>
   );

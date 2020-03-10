@@ -1,4 +1,7 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
+import * as actions from '../../actions/count';
 
 class Count extends React.Component {
   constructor(props) {
@@ -9,7 +12,7 @@ class Count extends React.Component {
   }
 
   componentDidMount() {
-
+    console.log('Component did mount.');
   }
 
   increaseCount = () => {
@@ -17,7 +20,7 @@ class Count extends React.Component {
       return {
         localCount: prevState.localCount + 1,
       }
-    })
+    });
   };
 
   decreaseCount = () => {
@@ -25,21 +28,34 @@ class Count extends React.Component {
       return {
         localCount: prevState.localCount - 1,
       }
-    })
+    });
   };
 
   render () {
     const { localCount } = this.state;
+    const { storeCount, increaseStoreCount, decreaseStoreCount } = this.props;
 
     return (
       <>
+        {'Class component'}
         <div>
-          {`localCount: ${localCount}`}
+          <div>
+            {`localCount: ${localCount}`}
+          </div>
+          <div>
+            {`storeCount: ${storeCount}`}
+          </div>
         </div>
-        <div onClick={this.increaseCount}>
+        <div onClick={() => {
+          this.increaseCount();
+          increaseStoreCount();
+        }}>
           {'+'}
         </div>
-        <div onClick={this.decreaseCount}>
+        <div onClick={() => {
+          this.decreaseCount();
+          decreaseStoreCount();
+        }}>
           {'-'}
         </div>
       </>
@@ -47,4 +63,13 @@ class Count extends React.Component {
   }
 }
 
-export default Count;
+const mapStateToProps = (state) => ({
+  storeCount: state.count.count,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  increaseStoreCount: () => dispatch(actions.increaseCount()),
+  decreaseStoreCount: () => dispatch(actions.decreaseCount()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Count);

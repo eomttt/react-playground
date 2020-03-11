@@ -19,6 +19,16 @@ const reducers = (state = initialStates, action) => {
         count: state.count - 1,
       }
     }
+    case countActions.INCREASE_COUNT_ASYNC: {
+      return {
+        ...state,
+      }
+    }
+    case countActions.DEFREASE_COUNT_ASYNC: {
+      return {
+        ...state,
+      }
+    }
     default: {
       return state;
     }

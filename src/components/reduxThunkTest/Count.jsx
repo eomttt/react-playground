@@ -33,7 +33,11 @@ class Count extends React.Component {
 
   render () {
     const { localCount } = this.state;
-    const { storeCount, increaseStoreCount, decreaseStoreCount } = this.props;
+    const { storeCount,
+            increaseStoreCount, decreaseStoreCount,
+            increaseCountAsyncThunk, decreaseCountAsyncThunk,
+            increaseCountAsyncSaga, decreaseCountAsyncSaga,
+    } = this.props;
 
     return (
       <>
@@ -58,6 +62,18 @@ class Count extends React.Component {
         }}>
           {'-'}
         </div>
+        <div onClick={increaseCountAsyncThunk}>
+          {'Increase count async thunk'}
+        </div>
+        <div onClick={decreaseCountAsyncThunk}>
+          {'Decrease count async thunk'}
+        </div>
+        <div onClick={increaseCountAsyncSaga}>
+          {'Increase count async saga'}
+        </div>
+        <div onClick={decreaseCountAsyncSaga}>
+          {'Decrease count async saga'}
+        </div>
       </>
     )
   }
@@ -70,6 +86,10 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   increaseStoreCount: () => dispatch(actions.increaseCount()),
   decreaseStoreCount: () => dispatch(actions.decreaseCount()),
+  increaseCountAsyncThunk: () => dispatch(actions.increaseCountAsyncThunk()),
+  decreaseCountAsyncThunk: () => dispatch(actions.decreaseCountAsyncThunk()),
+  increaseCountAsyncSaga: () => dispatch(actions.increaseCountAsyncSaga()),
+  decreaseCountAsyncSaga: () => dispatch(actions.decreaseCountAsyncSaga()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Count);

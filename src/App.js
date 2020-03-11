@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+import ReduxThunk from 'redux-thunk';
+import createSagaMiddleware from 'redux-saga';
 
 import './App.css';
 
@@ -19,10 +22,13 @@ import PropsComp from './components/propsComponent/PropsComp';
 import CountComponent from './components/reduxThunkTest/Count';
 import CountFCComponent from './components/reduxThunkTest/CountFC';
 
-import createStore from './store';
 import reducers from './reducers';
+import sagas from './sagas';
 
-const store = createStore(reducers);
+const sagaMiddleware = createSagaMiddleware();
+const store = createStore(reducers, applyMiddleware(ReduxThunk, sagaMiddleware));
+
+sagaMiddleware.run(sagas);
 
 function App() {
   const [selectedItemsParent, setSelectedItemsParent] = useState([]);

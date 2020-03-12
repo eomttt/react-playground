@@ -31,6 +31,13 @@ import { ApolloProvider } from 'react-apollo';
 import ApolloClient, { gql } from 'apollo-boost';
 
 import ApolloTest from './components/apolloTest/apolloTest';
+import ApolloTestDelay from './components/apolloTest/apolloTestDelay';
+
+import ApolloTestMutation from './components/apolloTest/apolloTestMutaion';
+import ApolloTestMutationUpdate from './components/apolloTest/apolloTestMutaionUpdate';
+
+import ApolloTestQueryAndMutation from './components/apolloTest/apolloTestQueryAndMutation';
+import ApolloTestQueryAndMutationUpdate from './components/apolloTest/apolloTestQueryAndMutationUpdate';
 
 const sagaMiddleware = createSagaMiddleware();
 const store = createStore(reducers, applyMiddleware(ReduxThunk, sagaMiddleware));
@@ -60,7 +67,7 @@ client
       }
     `,
   })
-  .then(result => console.log(result));
+  .then(result => console.log('TEST', result));
 
 function App() {
   const [selectedItemsParent, setSelectedItemsParent] = useState([]);
@@ -104,7 +111,12 @@ function App() {
           </div>
           <CountComponent />
           <CountFCComponent />
-          <ApolloTest />
+          {/* <ApolloTest />
+          <ApolloTestDelay />
+          <ApolloTestMutation />
+          <ApolloTestMutationUpdate /> */}
+          <ApolloTestQueryAndMutation />
+          <ApolloTestQueryAndMutationUpdate />
         </div>
       </Provider>
     </ApolloProvider>

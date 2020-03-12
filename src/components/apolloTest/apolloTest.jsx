@@ -2,22 +2,19 @@ import React from 'react';
 import { Query } from 'react-apollo';
 import { gql } from 'apollo-boost';
 
+const GET_PEOPLE = gql`
+  {
+    people {
+      name
+      id
+    }
+  }
+`
+
 const ApolloTest = () => {
   return (
     <Query
-      query={gql`
-        query {
-          testMovies(limit: 3, rating: 9) {
-            id
-            title
-            rating
-          }
-          testMovie(id: 15553) {
-            title
-            summary
-          }
-        }
-      `}
+      query={GET_PEOPLE}
     >
       {
         ({ loading, error, data}) => {
@@ -27,7 +24,7 @@ const ApolloTest = () => {
           if (error) {
             return <p>ERROR</p>;
           }
-          console.log('Data', data);
+          console.log('Query data', data);
           return <p>Data</p>;
         }
       }

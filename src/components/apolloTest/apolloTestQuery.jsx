@@ -6,19 +6,19 @@ import React from 'react';
 import { Query } from 'react-apollo';
 import { gql } from 'apollo-boost';
 
-const GET_PEOPLE = gql`
-  {
-    people {
+const GET_PERSON = gql`
+  query Person($id: String!) {
+    person(id: $id) {
       name
-      id
     }
   }
 `
 
-const ApolloTest = () => {
+const ApolloTestQuery = () => {
   return (
     <Query
-      query={GET_PEOPLE}
+      query={GET_PERSON}
+      variables={{ id: '1' }}
     >
       {
         ({ loading, error, data}) => {
@@ -29,19 +29,11 @@ const ApolloTest = () => {
             return <p>ERROR</p>;
           }
           console.log('Query data', data);
-          return (
-            <>
-            {
-              data.people.map((person) => {
-                return <div key={person.id}>{person.name}</div>
-              })
-            }
-            </>
-          );
+          return <p>{data.person.name}</p>;
         }
       }
     </Query>
   )
 };
 
-export default ApolloTest;
+export default ApolloTestQuery;

@@ -32,6 +32,7 @@ import ApolloClient, { gql } from 'apollo-boost';
 
 import ApolloTest from './components/apolloTest/apolloTest';
 import ApolloTestDelay from './components/apolloTest/apolloTestDelay';
+import ApolloTestQuery from './components/apolloTest/apolloTestQuery';
 
 import ApolloTestMutation from './components/apolloTest/apolloTestMutaion';
 import ApolloTestMutationUpdate from './components/apolloTest/apolloTestMutaionUpdate';
@@ -111,12 +112,13 @@ function App() {
           </div>
           <CountComponent />
           <CountFCComponent />
-          {/* <ApolloTest />
-          <ApolloTestDelay />
+          <ApolloTestQuery />
+          <ApolloTest />
+          {/* <ApolloTestDelay />
           <ApolloTestMutation />
           <ApolloTestMutationUpdate /> */}
-          <ApolloTestQueryAndMutation />
-          <ApolloTestQueryAndMutationUpdate />
+          {/* <ApolloTestQueryAndMutation />
+          <ApolloTestQueryAndMutationUpdate /> */}
         </div>
       </Provider>
     </ApolloProvider>

@@ -1,3 +1,7 @@
+/**
+ * Action 이 있을 때에 query test
+ */
+
 import React from 'react';
 import { ApolloConsumer } from 'react-apollo';
 import { gql } from 'apollo-boost';

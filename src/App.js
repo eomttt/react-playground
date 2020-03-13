@@ -28,7 +28,14 @@ import sagas from './sagas';
 
 // Apollo
 import { ApolloProvider } from 'react-apollo';
+// Apollo boost
 import ApolloClient, { gql } from 'apollo-boost';
+
+// Apollo client
+// import { ApolloClient } from 'apollo-client';
+// import { InMemoryCache } from 'apollo-cache-inmemory';
+// import { createHttpLink } from "apollo-link-http";
+// import gql from "graphql-tag";  
 
 import ApolloTest from './components/apolloTest/apolloTest';
 import ApolloTestDelay from './components/apolloTest/apolloTestDelay';
@@ -45,11 +52,15 @@ const store = createStore(reducers, applyMiddleware(ReduxThunk, sagaMiddleware))
 
 sagaMiddleware.run(sagas);
 
+// Use Apollo client
+// const client = new ApolloClient({
+//   link: createHttpLink({ uri: process.env.NODE_ENV === 'development' ? 'http://localhost:4000/graphql' : '' }),
+//   cache: new InMemoryCache(),
+// });
+
+// Use Apollo boost
 const client = new ApolloClient({
-  uri:
-    process.env.NODE_ENV === 'development'
-      ? 'http://localhost:4000/graphql'
-      : '',
+  uri: process.env.NODE_ENV === 'development' ? 'http://localhost:4000/graphql' : '',
 });
 
 client
@@ -71,19 +82,19 @@ client
   .then(result => console.log('TEST', result));
 
 function App() {
-  const [selectedItemsParent, setSelectedItemsParent] = useState([]);
-  const [selectedItems, setSelectedItems] = useState([]);
+  // const [selectedItemsParent, setSelectedItemsParent] = useState([]);
+  // const [selectedItems, setSelectedItems] = useState([]);
 
-  const handleSelectedCategories = (selectedIdListOnlyParent, selectedIdList) => {
-    setSelectedItemsParent(selectedIdListOnlyParent);
-    setSelectedItems(selectedIdList);
-  };
+  // const handleSelectedCategories = (selectedIdListOnlyParent, selectedIdList) => {
+  //   setSelectedItemsParent(selectedIdListOnlyParent);
+  //   setSelectedItems(selectedIdList);
+  // };
 
   return (
     <ApolloProvider client={client}>
       <Provider store={store}>
         <div className="App">
-          <PropsComp />
+          {/* <PropsComp />
           <ParentComp>
             <ChildComp />
           </ParentComp>
@@ -111,14 +122,14 @@ function App() {
             }
           </div>
           <CountComponent />
-          <CountFCComponent />
-          <ApolloTestQuery />
-          <ApolloTest />
-          {/* <ApolloTestDelay />
-          <ApolloTestMutation />
-          <ApolloTestMutationUpdate /> */}
-          {/* <ApolloTestQueryAndMutation />
-          <ApolloTestQueryAndMutationUpdate /> */}
+          <CountFCComponent /> */}
+          {/* <ApolloTestQuery /> */}
+          {/* <ApolloTest /> */}
+          {/* <ApolloTestDelay /> */}
+          {/* <ApolloTestMutation /> */}
+          {/* <ApolloTestMutationUpdate /> */}
+          <ApolloTestQueryAndMutation />
+          <ApolloTestQueryAndMutationUpdate />
         </div>
       </Provider>
     </ApolloProvider>

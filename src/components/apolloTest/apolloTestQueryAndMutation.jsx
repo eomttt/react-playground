@@ -36,17 +36,6 @@ const ApolloTestQueryAndMutation = () => {
           console.log('Query and Mutation data in query', data);
           return (
             <>
-              <div>
-                {
-                  data.people.map((person) => {
-                    return (
-                      <div key={person.id}>
-                        {person.name}
-                      </div>
-                    )
-                  })
-                }
-              </div>
               <Mutation 
                 mutation={ADD_PERSON}
               >
@@ -75,6 +64,17 @@ const ApolloTestQueryAndMutation = () => {
                   }
                 }
               </Mutation>
+              <div>
+                {
+                  data.people.map((person) => {
+                    return (
+                      <div key={person.id}>
+                        {person.name}
+                      </div>
+                    )
+                  })
+                }
+              </div>
             </>
           );
         }

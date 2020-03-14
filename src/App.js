@@ -94,7 +94,7 @@ function App() {
     <ApolloProvider client={client}>
       <Provider store={store}>
         <div className="App">
-          {/* <PropsComp />
+          <PropsComp />
           <ParentComp>
             <ChildComp />
           </ParentComp>
@@ -122,7 +122,7 @@ function App() {
             }
           </div>
           <CountComponent />
-          <CountFCComponent /> */}
+          <CountFCComponent />
           {/* <ApolloTestQuery /> */}
           {/* <ApolloTest /> */}
           {/* <ApolloTestDelay /> */}

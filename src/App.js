@@ -47,6 +47,9 @@ import ApolloTestMutationUpdate from './components/apolloTest/apolloTestMutaionU
 import ApolloTestQueryAndMutation from './components/apolloTest/apolloTestQueryAndMutation';
 import ApolloTestQueryAndMutationUpdate from './components/apolloTest/apolloTestQueryAndMutationUpdate';
 
+// Epub
+import EpubReader from './components/epubReader/EpubReader';
+
 const sagaMiddleware = createSagaMiddleware();
 const store = createStore(reducers, applyMiddleware(ReduxThunk, sagaMiddleware));
 
@@ -82,13 +85,13 @@ client
   .then(result => console.log('TEST', result));
 
 function App() {
-  // const [selectedItemsParent, setSelectedItemsParent] = useState([]);
-  // const [selectedItems, setSelectedItems] = useState([]);
+  const [selectedItemsParent, setSelectedItemsParent] = useState([]);
+  const [selectedItems, setSelectedItems] = useState([]);
 
-  // const handleSelectedCategories = (selectedIdListOnlyParent, selectedIdList) => {
-  //   setSelectedItemsParent(selectedIdListOnlyParent);
-  //   setSelectedItems(selectedIdList);
-  // };
+  const handleSelectedCategories = (selectedIdListOnlyParent, selectedIdList) => {
+    setSelectedItemsParent(selectedIdListOnlyParent);
+    setSelectedItems(selectedIdList);
+  };
 
   return (
     <ApolloProvider client={client}>
@@ -130,6 +133,7 @@ function App() {
           {/* <ApolloTestMutationUpdate /> */}
           <ApolloTestQueryAndMutation />
           <ApolloTestQueryAndMutationUpdate />
+          <EpubReader />
         </div>
       </Provider>
     </ApolloProvider>

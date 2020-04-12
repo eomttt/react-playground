@@ -9,10 +9,18 @@ import './App.css';
 // MulitiSelector
 // import MultiSelector from './components/multiSelector/MultiSelector';
 // import TestMultiCheckItem from './components/multiSelector/TestMultiCheckItem';
-// import ReactTreeMultiSelector from 'react-tree-multi-selector';
-import ReactTreeMultiSelector from './private-modules';
+import ReactTreeMultiSelector from 'react-tree-multi-selector';
+// import ReactTreeMultiSelector from './private-modules';
+import {
+  dummyCategories,
+  dummyInitial,
+  dummyExceptions,
+  dummyNotSelections,
+  dummySelectedCategoryCallback,
+} from './dummy/MultiSelectorItem';
+
 // import MultiSelector from 'multi-select-react';
-// import TestMultiCategories, { initialSelectedIds, exceptionIds, notSelectionIds } from './components/multiSelector/TestMultiCategories';
+
 
 // Props to components
 // import PropsComp from './components/propsComponent/PropsComp';
@@ -97,9 +105,13 @@ function App() {
   // };
 
   return (
-    <>
-      <ReactTreeMultiSelector />
-    </>
+    <ReactTreeMultiSelector
+      categories={dummyCategories}
+      initialSelectedIds={dummyInitial}
+      exceptionIds={dummyExceptions}
+      notSelectionIds={dummyNotSelections}
+      handleSelectedCategories={dummySelectedCategoryCallback}
+    />
   );
 }
 

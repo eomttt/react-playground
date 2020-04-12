@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React  from 'react';
 
 import './App.css';
 
@@ -9,9 +9,10 @@ import './App.css';
 // MulitiSelector
 // import MultiSelector from './components/multiSelector/MultiSelector';
 // import TestMultiCheckItem from './components/multiSelector/TestMultiCheckItem';
-import ReactTreeMultiSelector from 'react-tree-multi-selector';
+// import ReactTreeMultiSelector from 'react-tree-multi-selector';
+import ReactTreeMultiSelector from './private-modules';
 // import MultiSelector from 'multi-select-react';
-import TestMultiCategories, { initialSelectedIds, exceptionIds, notSelectionIds } from './components/multiSelector/TestMultiCategories';
+// import TestMultiCategories, { initialSelectedIds, exceptionIds, notSelectionIds } from './components/multiSelector/TestMultiCategories';
 
 // Props to components
 // import PropsComp from './components/propsComponent/PropsComp';
